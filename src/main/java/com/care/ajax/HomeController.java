@@ -43,19 +43,19 @@ public class HomeController {
 	
 	@GetMapping("non_ajax")
 	public String non_ajax() {
-		return "non_ajax";
+		return "ajax/non_ajax";
 	}
 	
 	@GetMapping("ajax01")
 	public String ajax01() {
 		System.out.println("좋아요+1");
-		return "ajax";
+		return "ajax/ajax";
 	}
 	
 	@GetMapping("ajax02")
 	public String ajax02() {
 		System.out.println("좋아요+2");
-		return "ajax02";
+		return "ajax/ajax02";
 	}
 	
 	static int cnt = 0;
@@ -67,7 +67,7 @@ public class HomeController {
 	
 	@GetMapping("ajax03")
 	public String ajax03() {
-		return "ajax03";
+		return "ajax/ajax03";
 	}
 	
 	@PostMapping(value="ajax_result03",
@@ -81,7 +81,7 @@ public class HomeController {
 	
 	@GetMapping("ajax04")
 	public String ajax04() {
-		return "ajax04";
+		return "ajax/ajax04";
 	}
 	
 	@PostMapping(value="ajax_result04",
@@ -96,12 +96,12 @@ public class HomeController {
 	
 	@GetMapping("rest01")
 	public String rest01(){
-		return "rest01";
+		return "ajax/rest01";
 	}
 	
 	@GetMapping("getuser")
 	public String getuser() {
-		return "getuser";
+		return "ajax/getuser";
 	}
 	
 	

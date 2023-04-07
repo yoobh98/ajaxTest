@@ -80,15 +80,10 @@ public class ExcelFile {
 		Font fontHeader = workBook.createFont();
 		//System.out.println("폰트 가져오고..");
 		CellStyle headerCellStyle = workBook.createCellStyle();
-		//System.out.println("cell 스타일 가져오고..");
 		headerCellStyle.setFont(fontHeader);
-		//System.out.println("setFont 지정..");
 		headerCellStyle.setAlignment(HorizontalAlignment.CENTER);
-		//System.out.println("setAlignment 지정..");
-		headerCellStyle.setFillBackgroundColor(IndexedColors.CORNFLOWER_BLUE.getIndex());
-		//System.out.println("setFillBackgroundColor 지정..");
+		headerCellStyle.setFillForegroundColor(IndexedColors.CORNFLOWER_BLUE.getIndex());
 		headerCellStyle.setFillPattern(FillPatternType.SOLID_FOREGROUND);
-		//System.out.println("setFillPattern 지정..");
 		
 		for(int i = 0 ; i < fields.length ;i++) {
 			System.out.println("for 문 시작");
@@ -113,27 +108,26 @@ public class ExcelFile {
 		}
 	}		
 	
-
-	
+	//바디 값 입력
 	private void setExcelBody() throws Exception {
 		System.out.println("바디 지정시작..");
-		for (int i =  0; i < list.size(); i++) {
+		for (int i = 0; i < list.size(); i++) {
 			//sheet에서 로우 하나더 만들어주고
 			row = sheet.createRow(i + 1);
 			int rowNum = 0;
 			
 			Field[] fields = type.getDeclaredFields();
-			for(int j = 0; j < fields.length; j++) {
+			for (int j = 0; j < fields.length; j++) {
 				//cell 추가해주기
 				cell = row.createCell(rowNum);
 				ExcelColumn excelColumn = fields[j].getAnnotation(ExcelColumn.class);
-				//@ExcelColumn 붙어있는것만 가져와서 입력
-				if(excelColumn != null) {
+				// @ExcelColumn 어노테이션 붙어있는 값만 가져와서 입력
+				if (excelColumn != null) {
 					String methodName = fields[j].getName();
 					methodName = StringUtils.capitalize(methodName);
 					Method method = type.getMethod("get" + methodName);
 					Object object = method.invoke(list.get(i));
-					if(object != null) {
+					if (object != null) {
 						cell.setCellValue(object.toString());
 					}
 					rowNum++;

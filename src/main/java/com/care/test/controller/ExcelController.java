@@ -54,13 +54,13 @@ public class ExcelController {
 	public void getSearchUserList(HttpServletResponse res,String userName) throws Exception{
 		System.out.println("==================== getSearchUserList START========================");
 		List<ExcelVO> list = excelService.getSearchUserList(userName);
-		System.out.println("리스트 가져오고");
+		//System.out.println("리스트 가져오고");
 		ExcelFile excelFile= new ExcelFile(ExcelVO.class, list);
-		System.out.println("파일 만들고");
+		//System.out.println("파일 만들고");
 		res.setContentType("application/vnd.ms-excel");
-		System.out.println("컨텐트 타입 지정");
+		//System.out.println("컨텐트 타입 지정");
 		res.setHeader("Content-Disposition", "attachment;filename=userList.xls");
-		System.out.println("헤더 지정");
+		//System.out.println("헤더 지정");
 		excelFile.write(res.getOutputStream());
 		System.out.println("==================== getSearchUserList END ========================");
 	}

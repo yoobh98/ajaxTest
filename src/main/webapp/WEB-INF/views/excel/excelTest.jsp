@@ -42,6 +42,11 @@
 		
 	}
 	
+	function allUserListDownload(){
+		console.log('모든 유저 정보 다운..')
+		$("#allUserListDown").submit();
+	}
+	
 </script>
 </head>
 <body>
@@ -63,7 +68,11 @@
 	<input type="text" name="userName" >
 	<button onclick="userListDownload()">해당 유저 정보 엑셀로 다운로드</button>
 </form>
+<hr>
 
+<form id="allUserListDown" action="getAllUserList">
+	<button onclick="allUserListDownload()">모든 유저 정보 엑셀로 다운로드</button>
+</form>
 
 
 
